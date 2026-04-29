@@ -1,18 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+import LuckyWheelPage from "./wheel/LuckyWheelPage";
 import reportWebVitals from "./reportWebVitals";
-import { Store } from "./context/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Store>
-      <App />
-    </Store>
+    <LuckyWheelPage />
   </React.StrictMode>
 );
 
