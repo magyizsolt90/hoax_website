@@ -16,7 +16,9 @@
       "Bash(gh pr create --title 'Add HOAX Lucky Wheel campaign page' --body ' *)",
       "Bash(brew list *)",
       "Bash(git remote *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Read(//Users/tl0zs/Documents/My projects/hoax_map/**)",
+      "Read(//Users/tl0zs/Documents/My projects/hoax_map/src/wheel/db/**)"
     ]
   }
 }
