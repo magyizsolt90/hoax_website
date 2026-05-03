@@ -53,9 +53,8 @@
   z-index: 1;
 }
 .wheel-logo {
-  width: 52px;
-  height: 52px;
-  filter: invert(1);
+  width: 130px;
+  height: 130px;
   margin-bottom: 4px;
 }
 .wheel-title {
