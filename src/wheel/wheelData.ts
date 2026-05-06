@@ -4,6 +4,7 @@ export interface Prize {
   sublabel?: string;
   promoCode: string;
   description: string;
+  website?: string;   // optional — shown as tappable link in the prize modal
   isJackpot: boolean;
 }
 
@@ -11,9 +12,9 @@ export interface Prize {
 export const PRIZES: Prize[] = [
   {
     id: 0,
-    label: 'JACKPOT',
-    promoCode: 'HOAX-JACKPOT-001',
-    description: '3 hónapos HOAX előfizetés — INGYEN!',
+    label: 'COFFEE BOX',
+    promoCode: 'JACKPOT',
+    description: 'Részt veszel a sorsoláson: május 31🎉',
     isJackpot: true,
   },
   {
@@ -26,10 +27,11 @@ export const PRIZES: Prize[] = [
   },
   {
     id: 2,
-    label: '20%',
+    label: '15%',
     sublabel: 'OFF',
-    promoCode: 'HOAX20-B3G',
-    description: '20% kedvezmény az előfizetésre',
+    promoCode: 'GBXHOAX15',
+    description: '15% kedvezmény a Goosebumps webshopon',
+    website: 'https://goosebumps.hu',
     isJackpot: false,
   },
   {
@@ -44,16 +46,18 @@ export const PRIZES: Prize[] = [
     id: 4,
     label: '10%',
     sublabel: 'OFF',
-    promoCode: 'HOAX10-D5I',
-    description: '10% kedvezmény az előfizetésre',
+    promoCode: 'MATHIASREXXHOAX10',
+    description: '10% kedvezmény a MATHIAS REX webshopon',
+    website: 'https://mathiasrexx.com',
     isJackpot: false,
   },
   {
     id: 5,
     label: '30%',
     sublabel: 'OFF',
-    promoCode: 'HOAX30-E6J',
-    description: '30% kedvezmény az első hónapra',
+    promoCode: 'GBXHOAX30',
+    description: '30% kedvezmény a Goosebumps webshopon',
+    website: 'https://goosebumps.hu',
     isJackpot: false,
   },
   {
@@ -106,10 +110,11 @@ export const PRIZES: Prize[] = [
   },
   {
     id: 12,
-    label: 'FREE',
-    sublabel: 'KÁVÉ',
-    promoCode: 'HOAXCAFE-L3Q',
-    description: 'Ingyenes kávé a HOAX partnereinél',
+    label: '5%',
+    sublabel: 'OFF',
+    promoCode: 'MATHIASREXXHOAX5',
+    description: '5% kedvezmény a MATHIAS REX webshopon',
+    website: 'https://mathiasrexx.com',
     isJackpot: false,
   },
   {

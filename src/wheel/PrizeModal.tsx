@@ -80,7 +80,22 @@ const PrizeModal: React.FC<Props> = ({ prize, onClose }) => {
         </div>
 
         <p className="modal-footer">
-          A kódot az előfizetésnél vagy partnerünknél tudod beváltani.
+          {prize.website ? (
+            <>
+              A kódot ezen a{' '}
+              <a
+                href={prize.website}
+                target="_blank"
+                rel="noreferrer"
+                className="modal-footer-link"
+              >
+                webshopon
+              </a>{' '}
+              tudod beváltani.
+            </>
+          ) : (
+            'A kódot az előfizetésnél tudod beváltani.'
+          )}
         </p>
 
         <button className="modal-btn" onClick={onClose}>

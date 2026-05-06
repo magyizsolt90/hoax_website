@@ -397,6 +397,11 @@
   margin: 0 0 20px;
   line-height: 1.5;
 }
+.modal-footer-link {
+  color: #FFD700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .modal-btn {
   background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
