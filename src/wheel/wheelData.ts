@@ -51,6 +51,14 @@ export const PRIZES: Prize[] = [
   },
   {
     id: 5,
+    label: 'IMP 10%',
+    promoCode: 'IMPRESSOxHOAX10',
+    description: '10% kedvezmény az Impresso webshopon',
+    website: 'https://impresso.hu',
+    isJackpot: false,
+  },
+  {
+    id: 6,
     label: 'NO WIN',
     promoCode: 'NOWIN',
     description: 'Sajnos ezúttal nem nyertél 😔 Próbálj újra legközelebb!',
@@ -58,7 +66,7 @@ export const PRIZES: Prize[] = [
     isNoWin: true,
   },
   {
-    id: 6,
+    id: 7,
     label: 'CRJ ??%',
     promoCode: 'TODO: UPDATE CODE',
     description: '??% kedvezmény a Crackerjack webshopon',
@@ -66,7 +74,7 @@ export const PRIZES: Prize[] = [
     isJackpot: false,
   },
   {
-    id: 7,
+    id: 8,
     label: 'DAGAZ 10%',
     promoCode: 'DAGAZXHOAX10',
     description: '10% kedvezmény a Dagaz webshopon',
@@ -74,7 +82,7 @@ export const PRIZES: Prize[] = [
     isJackpot: false,
   },
   {
-    id: 8,
+    id: 9,
     label: 'REX 5%',
     promoCode: 'MATHIASREXXHOAX5',
     description: '5% kedvezmény a MATHIAS REX webshopon',
@@ -82,7 +90,15 @@ export const PRIZES: Prize[] = [
     isJackpot: false,
   },
   {
-    id: 9,
+    id: 10,
+    label: 'IMP 20%',
+    promoCode: 'IMPRESSOxHOAX20',
+    description: '2% kedvezmény az Impresso webshopon',
+    website: 'https://impresso.hu',
+    isJackpot: false,
+  },
+  {
+    id: 11,
     label: 'DAGAZ 20%',
     promoCode: 'DAGAZXHOAX20',
     description: '20% kedvezmény a Dagaz webshopon',
@@ -91,5 +107,5 @@ export const PRIZES: Prize[] = [
   },
 ];
 
-export const SEGMENT_COUNT = PRIZES.length; // 10
+export const SEGMENT_COUNT = PRIZES.length;
 export const SEGMENT_ANGLE = 360 / SEGMENT_COUNT; // 36°
