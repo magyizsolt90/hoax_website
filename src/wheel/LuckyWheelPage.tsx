@@ -5,6 +5,7 @@ import EmailGate from './EmailGate';
 import PrizeModal from './PrizeModal';
 import { PRIZES } from './wheelData';
 import { db } from './db';
+import { sendPrizeEmail } from './brevo';
 
 type Phase = 'email' | 'ready' | 'spinning' | 'done';
 
@@ -29,12 +30,20 @@ const LuckyWheelPage: React.FC = () => {
 
   async function handleSpinComplete(prizeIdx: number) {
     const prize = PRIZES[prizeIdx];
+
+    // Persist the record (localStorage in dev, real API in prod)
     await db.saveRecord({
       timestamp: new Date().toISOString(),
       email: userEmail,
       reward: prize.description,
       promoCode: prize.promoCode,
     });
+
+    // Fire-and-forget Brevo email — modal shown regardless of outcome
+    sendPrizeEmail(userEmail, prize).catch(() => {
+      // swallow: the modal already shows the promo code as fallback
+    });
+
     setWonPrize(prize);
     setPhase('done');
     setShowModal(true);
