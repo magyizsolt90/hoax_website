@@ -78,7 +78,8 @@ const LuckyWheel: React.FC<Props> = ({ targetIndex, spinning, onSpinComplete }) 
     // Segment i centre = i * SEGMENT_ANGLE + SEGMENT_ANGLE/2 degrees from top.
     const segCentre = targetIndex * SEGMENT_ANGLE + SEGMENT_ANGLE / 2;
     const fullSpins = (5 + Math.floor(Math.random() * 3)) * 360;
-    const target = baseRotation.current + fullSpins + segCentre;
+    const neededRotation = (360 - segCentre) % 360;
+    const target = baseRotation.current + fullSpins + neededRotation;
     baseRotation.current = target;
     setRotation(target);
 
