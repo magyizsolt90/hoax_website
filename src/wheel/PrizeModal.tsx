@@ -47,56 +47,59 @@ const PrizeModal: React.FC<Props> = ({ prize, onClose }) => {
           ✕
         </button>
 
-        {prize.isJackpot ? (
+        {prize.isNoWin ? (
+          <>
+            <div className="modal-icon">😔</div>
+            <h2 className="modal-title">Sajnos nem nyertél…</h2>
+            <p className="modal-reward">{prize.description}</p>
+          </>
+        ) : prize.isJackpot ? (
           <>
             <div className="modal-icon">🏆</div>
             <h2 className="modal-title jackpot-title">JACKPOT!</h2>
             <p className="modal-subtitle">Hihetetlen! A főnyereményt nyerted!</p>
+            <p className="modal-reward">{prize.description}</p>
           </>
         ) : (
           <>
             <div className="modal-icon">🎉</div>
             <h2 className="modal-title">Gratulálunk!</h2>
-            <p className="modal-subtitle">Nyertél egy</p>
+            <p className="modal-reward">{prize.description}</p>
+            <div className="promo-block">
+              <p className="promo-label">Promo kód</p>
+              <button
+                className="promo-code-btn"
+                onClick={copyCode}
+                title="Kattints a másoláshoz"
+              >
+                <span className={`promo-code-value ${copied ? 'promo-copied' : ''}`}>
+                  {prize.promoCode}
+                </span>
+                <span className="promo-copy-hint">
+                  {copied ? '✓ Másolva' : 'Kattints a másoláshoz'}
+                </span>
+              </button>
+            </div>
+            <p className="modal-footer">
+              {prize.website ? (
+                <>
+                  A kódot ezen a{' '}
+                  <a
+                    href={prize.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="modal-footer-link"
+                  >
+                    webshopon
+                  </a>{' '}
+                  tudod beváltani.
+                </>
+              ) : (
+                'A kódot az előfizetésnél tudod beváltani.'
+              )}
+            </p>
           </>
         )}
-
-        <p className="modal-reward">{prize.description}</p>
-
-        <div className="promo-block">
-          <p className="promo-label">Promo kód</p>
-          <button
-            className="promo-code-btn"
-            onClick={copyCode}
-            title="Kattints a másoláshoz"
-          >
-            <span className={`promo-code-value ${copied ? 'promo-copied' : ''}`}>
-              {prize.promoCode}
-            </span>
-            <span className="promo-copy-hint">
-              {copied ? '✓ Másolva' : 'Kattints a másoláshoz'}
-            </span>
-          </button>
-        </div>
-
-        <p className="modal-footer">
-          {prize.website ? (
-            <>
-              A kódot ezen a{' '}
-              <a
-                href={prize.website}
-                target="_blank"
-                rel="noreferrer"
-                className="modal-footer-link"
-              >
-                webshopon
-              </a>{' '}
-              tudod beváltani.
-            </>
-          ) : (
-            'A kódot az előfizetésnél tudod beváltani.'
-          )}
-        </p>
 
         <button className="modal-btn" onClick={onClose}>
           Bezárás

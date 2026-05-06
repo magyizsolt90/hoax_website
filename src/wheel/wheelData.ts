@@ -1,139 +1,95 @@
 export interface Prize {
   id: number;
   label: string;
-  sublabel?: string;
   promoCode: string;
   description: string;
-  website?: string;   // optional — shown as tappable link in the prize modal
+  website?: string;   // shown as tappable link in the prize modal
   isJackpot: boolean;
+  isNoWin?: boolean;
 }
 
-// 15 prizes: index 0 = JACKPOT (major), 1–14 = promo codes
+// 10 prizes — index 0 = JACKPOT, index 5 = NO WIN (opposite side)
 export const PRIZES: Prize[] = [
   {
     id: 0,
-    label: 'COFFEE BOX',
-    promoCode: 'JACKPOT',
-    description: 'Részt veszel a sorsoláson: május 31🎉',
+    label: 'JACKPOT',
+    promoCode: 'COFFEEBOX',
+    description: 'Részt veszel a sorsoláson: május 31.🎉',
     isJackpot: true,
   },
   {
     id: 1,
-    label: '10%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX10-A2F',
-    description: '10% kedvezmény az előfizetésre',
-    isJackpot: false,
-  },
-  {
-    id: 2,
-    label: '15%',
-    sublabel: 'OFF',
+    label: 'GBX 15%',
     promoCode: 'GBXHOAX15',
     description: '15% kedvezmény a Goosebumps webshopon',
     website: 'https://goosebumps.hu',
     isJackpot: false,
   },
   {
+    id: 2,
+    label: 'CRJ ??%',
+    promoCode: 'TODO: UPDATE CODE',
+    description: '??% kedvezmény a Crackerjack webshopon',
+    website: 'https://crackerjack.hu',
+    isJackpot: false,
+  },
+  {
     id: 3,
-    label: '15%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX15-C4H',
-    description: '15% kedvezmény az előfizetésre',
+    label: 'REX 10%',
+    promoCode: 'MATHIASREXXHOAX10',
+    description: '10% kedvezmény a MATHIAS REX webshopon',
+    website: 'https://rexkave.hu',
     isJackpot: false,
   },
   {
     id: 4,
-    label: '10%',
-    sublabel: 'OFF',
-    promoCode: 'MATHIASREXXHOAX10',
-    description: '10% kedvezmény a MATHIAS REX webshopon',
-    website: 'https://mathiasrexx.com',
-    isJackpot: false,
-  },
-  {
-    id: 5,
-    label: '30%',
-    sublabel: 'OFF',
+    label: 'GBX 30%',
     promoCode: 'GBXHOAX30',
     description: '30% kedvezmény a Goosebumps webshopon',
     website: 'https://goosebumps.hu',
     isJackpot: false,
   },
   {
+    id: 5,
+    label: 'NO WIN',
+    promoCode: 'NOWIN',
+    description: 'Sajnos ezúttal nem nyertél 😔 Próbálj újra legközelebb!',
+    isJackpot: false,
+    isNoWin: true,
+  },
+  {
     id: 6,
-    label: 'FREE',
-    sublabel: 'KÁVÉ',
-    promoCode: 'HOAXCAFE-F7K',
-    description: 'Ingyenes kávé a HOAX partnereinél',
+    label: 'CRJ ??%',
+    promoCode: 'TODO: UPDATE CODE',
+    description: '??% kedvezmény a Crackerjack webshopon',
+    website: 'https://crackerjack.hu',
     isJackpot: false,
   },
   {
     id: 7,
-    label: '20%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX20-G8L',
-    description: '20% kedvezmény az előfizetésre',
+    label: 'DAGAZ 10%',
+    promoCode: 'DAGAZXHOAX10',
+    description: '10% kedvezmény a Dagaz webshopon',
+    website: 'https://dagaz.hu',
     isJackpot: false,
   },
   {
     id: 8,
-    label: '50%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX50-H9M',
-    description: '50% kedvezmény az első hónapra',
+    label: 'REX 5%',
+    promoCode: 'MATHIASREXXHOAX5',
+    description: '5% kedvezmény a MATHIAS REX webshopon',
+    website: 'https://rexkave.hu',
     isJackpot: false,
   },
   {
     id: 9,
-    label: '10%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX10-I0N',
-    description: '10% kedvezmény az előfizetésre',
-    isJackpot: false,
-  },
-  {
-    id: 10,
-    label: '25%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX25-J1O',
-    description: '25% kedvezmény az előfizetésre',
-    isJackpot: false,
-  },
-  {
-    id: 11,
-    label: '10%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX10-K2P',
-    description: '10% kedvezmény az előfizetésre',
-    isJackpot: false,
-  },
-  {
-    id: 12,
-    label: '5%',
-    sublabel: 'OFF',
-    promoCode: 'MATHIASREXXHOAX5',
-    description: '5% kedvezmény a MATHIAS REX webshopon',
-    website: 'https://mathiasrexx.com',
-    isJackpot: false,
-  },
-  {
-    id: 13,
-    label: '15%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX15-M4R',
-    description: '15% kedvezmény az előfizetésre',
-    isJackpot: false,
-  },
-  {
-    id: 14,
-    label: '20%',
-    sublabel: 'OFF',
-    promoCode: 'HOAX20-N5S',
-    description: '20% kedvezmény az előfizetésre',
+    label: 'DAGAZ 20%',
+    promoCode: 'DAGAZXHOAX20',
+    description: '20% kedvezmény a Dagaz webshopon',
+    website: 'https://dagaz.hu',
     isJackpot: false,
   },
 ];
 
-export const SEGMENT_COUNT = PRIZES.length; // 15
-export const SEGMENT_ANGLE = 360 / SEGMENT_COUNT; // 24°
+export const SEGMENT_COUNT = PRIZES.length; // 10
+export const SEGMENT_ANGLE = 360 / SEGMENT_COUNT; // 36°

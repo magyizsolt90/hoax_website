@@ -36,19 +36,22 @@ const LIGHTS = Array.from({ length: LIGHT_COUNT }, (_, i) =>
   polar(R_LIGHTS, (i * 360) / LIGHT_COUNT)
 );
 
-// Segment colours: alternating red / gold; jackpot gets bright gold
-const SEG_RED = '#B92020';
-const SEG_RED_STROKE = '#8B1010';
-const SEG_GOLD = '#D4840A';
-const SEG_GOLD_STROKE = '#A0620A';
-const SEG_JACKPOT = '#FFD700';
-const SEG_JACKPOT_STROKE = '#B8960A';
+// Segment colours
+const SEG_RED      = '#B92020';
+const SEG_RED_S    = '#8B1010';
+const SEG_GOLD     = '#D4840A';
+const SEG_GOLD_S   = '#A0620A';
+const SEG_JACKPOT  = '#FFD700';
+const SEG_JACKPOT_S = '#B8960A';
+const SEG_NOWIN    = '#0A0A0A';
+const SEG_NOWIN_S  = '#2A2A2A';
 
-function segColor(idx: number, isJackpot: boolean) {
-  if (isJackpot) return { fill: SEG_JACKPOT, stroke: SEG_JACKPOT_STROKE };
+function segColor(idx: number, isJackpot: boolean, isNoWin?: boolean) {
+  if (isJackpot) return { fill: SEG_JACKPOT,  stroke: SEG_JACKPOT_S };
+  if (isNoWin)   return { fill: SEG_NOWIN,    stroke: SEG_NOWIN_S   };
   return idx % 2 === 0
-    ? { fill: SEG_RED, stroke: SEG_RED_STROKE }
-    : { fill: SEG_GOLD, stroke: SEG_GOLD_STROKE };
+    ? { fill: SEG_RED,  stroke: SEG_RED_S  }
+    : { fill: SEG_GOLD, stroke: SEG_GOLD_S };
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -145,22 +148,25 @@ const LuckyWheel: React.FC<Props> = ({ targetIndex, spinning, onSpinComplete }) 
           const start = i * SEGMENT_ANGLE;
           const end = (i + 1) * SEGMENT_ANGLE;
           const mid = start + SEGMENT_ANGLE / 2;
-          const { fill, stroke } = segColor(i, prize.isJackpot);
+          const { fill, stroke } = segColor(i, prize.isJackpot, prize.isNoWin);
           const tp = polar(R * 0.67, mid);
-          const tpSub = polar(R * 0.55, mid);
           const rot = mid - 90;
+          const textFill = prize.isJackpot
+            ? '#1A0000'
+            : prize.isNoWin
+            ? 'rgba(255,255,255,0.35)'
+            : 'white';
 
           return (
             <g key={i}>
               <path d={slicePath(start, end)} fill={fill} stroke={stroke} strokeWidth="1.2" />
-              {/* Primary label */}
               <text
                 x={tp.x}
                 y={tp.y}
                 textAnchor="middle"
                 dominantBaseline="middle"
-                fill={prize.isJackpot ? '#1A0000' : 'white'}
-                fontSize={prize.isJackpot ? 10 : 11}
+                fill={textFill}
+                fontSize={prize.isJackpot ? 11 : 10}
                 fontWeight="700"
                 fontFamily="Rubik, sans-serif"
                 transform={`rotate(${rot}, ${tp.x}, ${tp.y})`}
@@ -168,23 +174,6 @@ const LuckyWheel: React.FC<Props> = ({ targetIndex, spinning, onSpinComplete }) 
               >
                 {prize.label}
               </text>
-              {/* Sublabel */}
-              {prize.sublabel && (
-                <text
-                  x={tpSub.x}
-                  y={tpSub.y}
-                  textAnchor="middle"
-                  dominantBaseline="middle"
-                  fill={prize.isJackpot ? '#1A0000' : 'rgba(255,255,255,0.85)'}
-                  fontSize={8}
-                  fontWeight="600"
-                  fontFamily="Rubik, sans-serif"
-                  transform={`rotate(${rot}, ${tpSub.x}, ${tpSub.y})`}
-                  style={{ userSelect: 'none' }}
-                >
-                  {prize.sublabel}
-                </text>
-              )}
             </g>
           );
         })}
