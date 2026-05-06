@@ -48,9 +48,6 @@ const LuckyWheelPage: React.FC = () => {
 
       {/* Header */}
       <header className="wheel-header">
-        <a href="https://www.hoaxcoffee.com/" target="_blank" rel="noreferrer">
-          <img src="/icons/hoax.svg" alt="HOAX" className="wheel-logo" />
-        </a>
         <h1 className="wheel-title">HOAX Lucky Wheel</h1>
         <p className="wheel-subtitle">Pörgesd meg a szerencsekereket és nyerj!</p>
       </header>
@@ -101,6 +98,11 @@ const LuckyWheelPage: React.FC = () => {
           </button>
         )}
       </div>
+
+      {/* Disclaimer */}
+      <p className="wheel-disclaimer">
+        Egyenként 1x lehet játszani. A kuponkódok 1x válthatók be, 2026. december 31-ig érvényesek. A főnyeremény (HOAX Specialty Collection Box) sorsolással kerül kisorsolásra a kampány végén.
+      </p>
 
       {/* Prize modal */}
       {showModal && wonPrize && (
