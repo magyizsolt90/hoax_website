@@ -94,7 +94,7 @@ const LuckyWheelPage: React.FC = () => {
         )}
         {phase === 'done' && (
           <button className="wheel-show-prize-btn" onClick={() => setShowModal(true)}>
-            Megnyeremény megtekintése
+            Nyeremény megtekintése
           </button>
         )}
       </div>
